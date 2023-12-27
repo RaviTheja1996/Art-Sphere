@@ -13,11 +13,12 @@ const SingleProduct = () => {
     const userName = useSelector(store => store.authReducer.userName);
     const userID = useSelector(store => store.authReducer.userID);
     const avatar = useSelector(store => store.authReducer.avatar);
+    const token = useSelector(store => store.authReducer.token);
     const fetchThedata = () => {
         fetch(`https://artsphere.onrender.com/arts/${id}`, {
             method: "GET",
             headers: {
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhcmFzIiwiaWF0IjoxNjk5MTA5MDAzLCJleHAiOjE2OTk3MTM4MDN9.J6J2TNTFERx0Cs1PUpuQUSjtRU4mQVYLLd6Coy7wXuY"
+                "Authorization": `Bearer ${token}`
             }
         })
             .then((res) => res.json())
